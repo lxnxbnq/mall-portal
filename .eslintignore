@@ -1,0 +1,6 @@
+# dev config
+config/*
+scripts/*
+
+# assets
+public/*
