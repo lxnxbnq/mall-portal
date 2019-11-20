@@ -7,7 +7,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       home page
-      <Details/>
+      <Details />
     </div>
   );
 };
