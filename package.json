@@ -5,9 +5,22 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "prettier": "prettier --write ./src/**/*.tsx ./src/**/*.ts --config ./.prettierrc.js --only-changed",
+    "lint:check": "eslint ./src --ext .tsx,.ts --report-unused-disable-directives",
+    "lint": "yarn prettier && yarn lint:check --fix"
   },
   "dependencies": {
+    "camelcase": "^5.2.0",
+    "react": "^16.12.0",
+    "react-app-polyfill": "^1.0.4",
+    "react-dev-utils": "^9.1.0",
+    "react-dom": "^16.12.0",
+    "resolve": "1.12.0",
+    "resolve-url-loader": "3.1.0",
+    "typescript": "3.7.2"
+  },
+  "devDependencies": {
     "@babel/core": "7.6.0",
     "@svgr/webpack": "4.3.2",
     "@types/jest": "24.0.23",
@@ -16,12 +29,13 @@
     "@types/react-dom": "16.9.4",
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "babel-eslint": "10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "8.0.6",
     "babel-plugin-named-asset-import": "^0.3.4",
     "babel-preset-react-app": "^9.0.2",
-    "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "css-loader": "2.1.1",
     "dotenv": "6.2.0",
@@ -51,30 +65,24 @@
     "postcss-normalize": "7.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "4.0.1",
-    "react": "^16.12.0",
-    "react-app-polyfill": "^1.0.4",
-    "react-dev-utils": "^9.1.0",
-    "react-dom": "^16.12.0",
-    "resolve": "1.12.0",
-    "resolve-url-loader": "3.1.0",
     "sass-loader": "7.2.0",
     "semver": "6.3.0",
     "style-loader": "1.0.0",
     "terser-webpack-plugin": "1.4.1",
     "ts-pnp": "1.1.4",
-    "typescript": "3.7.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
     "url-loader": "2.1.0",
     "webpack": "4.41.0",
     "webpack-dev-server": "3.2.1",
     "webpack-manifest-plugin": "2.1.1",
     "workbox-webpack-plugin": "4.3.1"
   },
-  "devDependencies": {
-    "@types/enzyme": "^3.10.3",
-    "@types/enzyme-adapter-react-16": "^1.0.5",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
-    "enzyme-to-json": "^3.4.3"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "browserslist": {
     "production": [

@@ -5,3 +5,6 @@ scripts/*
 # assets
 public/*
 dist/*
+
+# d.ts
+src/**/*.d.ts

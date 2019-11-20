@@ -2,6 +2,7 @@
 /// <reference types="react" />
 /// <reference types="react-dom" />
 
+// eslint-disable-next-line no-unused-vars
 declare namespace NodeJS {
   interface ProcessEnv {
     readonly NODE_ENV: 'development' | 'production' | 'test';
@@ -35,11 +36,12 @@ declare module '*.png' {
 }
 
 declare module '*.webp' {
-    const src: string;
-    export default src;
+  const src: string;
+  export default src;
 }
 
 declare module '*.svg' {
+  // eslint-disable-next-line no-unused-vars
   import * as React from 'react';
 
   export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;

@@ -49,5 +49,11 @@ if (
   argv.push(hasSourceControl ? '--watch' : '--watchAll');
 }
 
+if (
+  !process.env.CI &&
+  argv.indexOf('--color') === -1
+) {
+  argv.push('--color')
+}
 
 jest.run(argv);
