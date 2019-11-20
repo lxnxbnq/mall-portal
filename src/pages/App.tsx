@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import Details from '../components/details';
+import Details from '@src/components/details';
 
 const App: React.FC = () => {
   return (
