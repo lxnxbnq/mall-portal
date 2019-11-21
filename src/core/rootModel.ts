@@ -3,6 +3,7 @@ import { takeEvery, all } from 'redux-saga/effects';
 
 import about from '@pages/about/models/index';
 import member from '@pages/member/models/index';
+import home from '@pages/home/models/index';
 
 const namespaces: string[] = [];
 
@@ -28,7 +29,7 @@ function P(arr: any[]) {
 // saga任务
 export function* sagas() {
   try {
-    const list = yield P([about, member]);
+    const list = yield P([about, member, home]);
 
     // 在对应的action被dispatch时调用effect
     yield all([...list]);
@@ -39,5 +40,6 @@ export function* sagas() {
 
 export const reducers = combineReducers({
   about: about.reducer,
-  member: member.reducer
+  member: member.reducer,
+  home: home.reducer
 });

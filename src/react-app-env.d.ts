@@ -48,17 +48,17 @@ declare module '*.svg' {
   export default src;
 }
 
-declare module '*.module.css' {
+declare module '*.m.css' {
   const classes: { readonly [key: string]: string };
   export default classes;
 }
 
-declare module '*.module.scss' {
+declare module '*.m.scss' {
   const classes: { readonly [key: string]: string };
   export default classes;
 }
 
-declare module '*.module.sass' {
+declare module '*.m.sass' {
   const classes: { readonly [key: string]: string };
   export default classes;
 }

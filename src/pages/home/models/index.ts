@@ -14,7 +14,7 @@ const ACTION_HANDLER: any = {
 };
 
 export default {
-  namespace: 'member',
+  namespace: 'home',
   effects: {
     *increaseCount({ payload }: any) {
       yield put({
