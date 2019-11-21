@@ -1,11 +1,10 @@
 import hash from 'hash.js';
 import appConfig from '@core/appConfig';
-import history from '@core/history'
+import history from '@core/history';
 
-const {prefix} = appConfig;
+const { prefix } = appConfig;
 
 export const successCode = [200, 201, 204];
-
 
 const codeMessage: any = {
   200: '服务器成功返回请求的数据。',
@@ -22,10 +21,13 @@ const codeMessage: any = {
   500: '服务器发生错误，请检查服务器。',
   502: '网关错误。',
   503: '服务不可用，服务器暂时过载或维护。',
-  504: '网关超时。',
+  504: '网关超时。'
 };
 
-const checkStatus = (response: { status: string | number; statusText: any; }) => {
+const checkStatus = (response: {
+  status: string | number;
+  statusText: any;
+}) => {
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
@@ -36,7 +38,15 @@ const checkStatus = (response: { status: string | number; statusText: any; }) =>
   throw error;
 };
 
-const cachedSave = (response: { status?: string | number; statusText?: any; headers?: any; clone?: any; }, hashcode: string) => {
+const cachedSave = (
+  response: {
+    status?: string | number;
+    statusText?: any;
+    headers?: any;
+    clone?: any;
+  },
+  hashcode: string
+) => {
   /**
    * Clone a response data and store it in sessionStorage
    * Does not support data other than json, Cache only json
@@ -54,7 +64,6 @@ const cachedSave = (response: { status?: string | number; statusText?: any; head
   }
   return response;
 };
-
 
 /**
  * 请求之前执行
@@ -78,7 +87,7 @@ const afterRequest = (response: any) => {
   // if (response.headers && response.headers.has('authorization')) {
   //     localStorage.setItem(appStoreKey.TOKEN, response.headers.get('authorization'));
   // }
-}
+};
 
 /**
  * Requests a URL, returning a promise.
@@ -88,24 +97,24 @@ const afterRequest = (response: any) => {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url: string, option: any) {
-  
   const options = {
-    ...option,
+    ...option
   };
   /**
    * Produce fingerprints based on url and parameters
    * Maybe url has the same parameters
    */
-  const fingerprint = prefix + url + (options.body ? JSON.stringify(options.body) : '');
+  const fingerprint =
+    prefix + url + (options.body ? JSON.stringify(options.body) : '');
   const hashcode = hash
     .sha256()
     .update(fingerprint)
     .digest('hex');
 
   const defaultOptions = {
-    credentials: 'include',
+    credentials: 'include'
   };
-  const newOptions = { ...defaultOptions, ...options};
+  const newOptions = { ...defaultOptions, ...options };
 
   if (
     newOptions.method === 'POST' ||
@@ -117,14 +126,14 @@ export default function request(url: string, option: any) {
       newOptions.headers = {
         Accept: 'application/json',
         'Content-Type': 'application/json; charset=utf-8',
-        ...newOptions.headers,
+        ...newOptions.headers
       };
       newOptions.body = JSON.stringify(newOptions.body);
     } else {
       // newOptions.body is FormData
       newOptions.headers = {
         Accept: 'application/json',
-        ...newOptions.headers,
+        ...newOptions.headers
       };
     }
   }
@@ -136,7 +145,6 @@ export default function request(url: string, option: any) {
     .then(checkStatus)
     .then(response => cachedSave(response, hashcode))
     .then((response: any) => {
-
       afterRequest(response);
       // DELETE and 204 do not return data by default
       // using .json will report an error.
@@ -145,7 +153,7 @@ export default function request(url: string, option: any) {
       // }
       return response.json();
     })
-    .then( response => {
+    .then(response => {
       return response;
     })
     .catch(e => {
