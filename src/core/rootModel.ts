@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux';
 import { takeEvery, all } from 'redux-saga/effects';
 
 import about from '@pages/about/models/index';
@@ -24,7 +25,8 @@ function P(arr: any[]) {
   });
 }
 
-function* rootSaga() {
+// saga任务
+export function* sagas() {
   try {
     const list = yield P([about, member]);
 
@@ -35,4 +37,8 @@ function* rootSaga() {
   }
 }
 
-export default rootSaga;
+export const reducers = combineReducers({
+  about: about.reducer,
+  member: member.reducer
+});
+
