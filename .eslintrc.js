@@ -31,7 +31,9 @@ module.exports = {
     'default-case': 1,
     'no-alert': 2,
     'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error'
+    'react/jsx-uses-vars': 'error',
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn"
   },
   settings: {
     react: {

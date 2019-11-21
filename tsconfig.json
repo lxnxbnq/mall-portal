@@ -20,13 +20,17 @@
     "jsx": "react",
     "baseUrl":".",
     "paths": {
-        "@src/*": ["./src/*"] // 解决ts打包过程中的映射
-    }
+        "@src/*": ["./src/*"], // 解决ts打包过程中的映射
+        "@pages/*": ["./src/pages/*"],
+        "@utils/*": ["./src/utils/*"],
+        "@core/*": ["./src/core/*"],
+        "@components/*": ["./src/components/*"]
+    },
   },
   "include": [
     "src"
   ],
   "rules": {
     "no-implicit-dependencies": ["optional", ["src"]] // 该条默认项为禁止导入未在package.json中列出的依赖，解决ts编译过程中的映射
-  } ,
+  }
 }

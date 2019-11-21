@@ -87,7 +87,6 @@ checkBrowsers(paths.appPath, isInteractive)
       errors: errors =>
         devServer.sockWrite(devServer.sockets, 'errors', errors),
     };
-    console.log(config)
     // Create a webpack compiler that is configured with custom messages.
     const compiler = createCompiler({
       appName,
