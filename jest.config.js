@@ -22,12 +22,12 @@ module.exports = {
   },
   "transformIgnorePatterns": [
     "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
-    "^.+\\.m\\.(css|sass|scss)$"
+    "^.+\\.module\\.(css|sass|scss|less)$"
   ],
   "modulePaths": [],
   "moduleNameMapper": {
     "^react-native$": "react-native-web",
-    "^.+\\.m\\.(css|sass|scss)$": "identity-obj-proxy"
+    "^.+\\.module\\.(css|sass|scss|less)$": "identity-obj-proxy"
   },
   "moduleFileExtensions": [
     "web.js",
