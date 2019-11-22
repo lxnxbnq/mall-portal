@@ -1,6 +1,7 @@
-import { put } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
 import { IinitState } from './interface';
 export const Change_Count = 'Change_Count';
+import { getCat } from '@service/api';
 
 const initState: IinitState = {
   count: 1
@@ -17,6 +18,7 @@ export default {
   namespace: 'member',
   effects: {
     *increaseCount({ payload }: any) {
+      yield call(getCat);
       yield put({
         type: Change_Count,
         payload

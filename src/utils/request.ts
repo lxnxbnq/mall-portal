@@ -96,7 +96,7 @@ const afterRequest = (response: any) => {
  * @param  {object} [option] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-export default function request(url: string, option: any) {
+export default function request(url: string, option?: any) {
   const options = {
     ...option
   };

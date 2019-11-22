@@ -1,20 +1,11 @@
-let dev = {
-  base: 'http://104.243.18.231:5000',
+interface Config {
+  version: string;
+  prefix: string;
+  baseURL: string;
+}
+const appConfig: Config = {
   version: 'v0.0.1',
-  prefix: '/api/v1'
+  prefix: '/api/v1',
+  baseURL: 'http://localhost:8000/'
 };
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const pro = {
-  base: '',
-  version: 'v0.0.1',
-  prefix: '/api/v1'
-};
-
-let env = dev;
-
-export default {
-  baseURL: env.base,
-  version: env.version,
-  prefix: env.prefix
-};
+export default appConfig;
