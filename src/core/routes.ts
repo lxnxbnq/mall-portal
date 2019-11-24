@@ -1,5 +1,6 @@
 import MemberComponent from '@pages/member';
 import About from '@pages/about';
+import Home from '@pages/home';
 
 export interface Route {
   component: React.ReactElement | React.FC;
@@ -11,11 +12,16 @@ export interface Route {
 
 export const routes: Route[] = [
   {
-    component: MemberComponent,
-    path: '/member'
+    path: '/',
+    component: Home,
+    exact: true
   },
   {
-    component: About,
-    path: '/about'
+    path: '/member',
+    component: MemberComponent
+  },
+  {
+    path: '/about',
+    component: About
   }
 ];
