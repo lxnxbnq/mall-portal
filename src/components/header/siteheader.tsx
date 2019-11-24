@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import cx from "classnames";
 import s from './siteheader.module.less';
 
@@ -39,7 +39,7 @@ const SiteHeader: React.FunctionComponent = (): React.ReactElement => {
                     </ul>
                 </div>
             </div>
-            <div className={menuVisible ? cx(s['header-nav-menu'], s['header-nav-menu-visible']) : s['header-nav-menu']}>
+            <div data-menu-trigger className={menuVisible ? cx(s['header-nav-menu'], s['header-nav-menu-visible']) : s['header-nav-menu']}>
                 <div data-menu-trigger className={s['container']}></div>
             </div>
         </div>
