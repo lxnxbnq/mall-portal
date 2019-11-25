@@ -6,15 +6,16 @@ import './App.css';
 import Layout from '@components/layout';
 
 const App: React.FC = () => {
-    return (
-        <div className="App">
-            <Provider store={store}>
-                <Layout>
-                    <AppRouter />
-                </Layout>
-            </Provider>
-        </div>
-    );
+  let a = 1;
+  return (
+    <div className="App">
+      <Provider store={store}>
+        <Layout>
+          <AppRouter />
+        </Layout>
+      </Provider>
+    </div>
+  );
 };
 
 export default App;
