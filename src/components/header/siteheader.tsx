@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import cx from "classnames";
 import s from './siteheader.module.less';
 

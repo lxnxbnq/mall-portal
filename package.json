@@ -106,6 +106,13 @@
       "pre-commit": "npm run lint"
     }
   },
+  "lint-staged": {
+    "*.(js|ts|tsx)": [
+      "npm run prettier",
+      "npm run lint:check",
+      "git add"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
