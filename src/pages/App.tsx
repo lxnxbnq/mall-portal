@@ -6,7 +6,6 @@ import './App.css';
 import Layout from '@components/layout';
 
 const App: React.FC = () => {
-  let a = 1;
   return (
     <div className="App">
       <Provider store={store}>

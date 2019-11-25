@@ -6,10 +6,8 @@ import Header from '@components/header';
 const Layout: React.FC = ({ children }: any): React.ReactElement => {
   return (
     <div className={s.layout}>
-      <Header/>
-      <div>
-        {children}
-      </div>
+      <Header />
+      <div>{children}</div>
     </div>
   );
 };
