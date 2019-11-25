@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import s from './siteheader.module.less';
 
 const SiteHeader: React.FunctionComponent = (): React.ReactElement => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [menuVisible, setMenuVisible] = useState(false);
 
+  useEffect(() => {
+    window.addEventListener('mouseover', (e: any) => {
+      if (e.target.getAttribute('data-header-menu-trigger')) {
+        if (!menuVisible) {
+          setMenuVisible(true);
+        }
+      } else {
+        if (menuVisible) {
+          setMenuVisible(false);
+        }
+      }
+    });
+  });
   return (
     <div className={s['site-header']}>
       <div className={s.container}>
@@ -15,25 +27,32 @@ const SiteHeader: React.FunctionComponent = (): React.ReactElement => {
         <div className={s['header-nav']}>
           <ul className={s['nav-list']}>
             <li className={s['nav-item']}>
-              <a className={s['link']}>小米手机</a>
+              <a data-header-menu-trigger className={s['link']}>
+                小米手机
+              </a>
             </li>
             <li className={s['nav-item']}>
-              <a className={s['link']}>Redmi红米</a>
+              <a data-header-menu-trigger className={s['link']}>
+                Redmi红米
+              </a>
             </li>
             <li className={s['nav-item']}>
-              <a className={s['link']}>电视</a>
+              <a data-header-menu-trigger className={s['link']}>
+                电视
+              </a>
             </li>
           </ul>
         </div>
       </div>
       <div
+        data-header-menu-trigger
         className={
           menuVisible
             ? cx(s['header-nav-menu'], s['header-nav-menu-visible'])
             : s['header-nav-menu']
         }
       >
-        <div className={s['container']}></div>
+        <div data-header-menu-trigger className={s['container']}></div>
       </div>
     </div>
   );
