@@ -106,12 +106,6 @@
       "pre-commit": "npm run lint"
     }
   },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
