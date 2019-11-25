@@ -6,12 +6,13 @@ import member from '@pages/member/models/index';
 import home from '@pages/home/models/index';
 
 const namespaces: string[] = [];
+const modules = [about, member, home];
 
-function P(arr: any[]) {
+function P(modules: any[]) {
   return new Promise((resolve, reject) => {
     const actions = [];
-    for (let i = 0, len = arr.length; i < len; i++) {
-      const o = arr[i];
+    for (let i = 0, len = modules.length; i < len; i++) {
+      const o = modules[i];
       if (namespaces.indexOf(o.namespace) !== -1) {
         reject(`${o.namespace} 命名空间已经存在`);
       } else {
@@ -29,17 +30,17 @@ function P(arr: any[]) {
 // saga任务
 export function* sagas() {
   try {
-    const list = yield P([about, member, home]);
+    const list = yield P(modules);
 
     // 在对应的action被dispatch时调用effect
-    yield all([...list]);
+    yield all(list);
   } catch (e) {
     throw new Error(e);
   }
 }
 
-export const reducers = combineReducers({
-  about: about.reducer,
-  member: member.reducer,
-  home: home.reducer
+const reducers: any = {};
+modules.forEach(m => {
+  reducers[m.namespace] = m.reducer;
 });
+export const rootReducer = combineReducers(reducers);
