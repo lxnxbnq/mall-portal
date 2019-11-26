@@ -6,8 +6,8 @@ const SiteHeader: React.FunctionComponent = (): React.ReactElement => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('mouseover', (e: any) => {
-      if (e.target.getAttribute('data-header-menu-trigger')) {
+    window.addEventListener('mouseover', (e: MouseEvent): void => {
+      if ((e.target as HTMLElement).getAttribute('data-header-menu-trigger')) {
         if (!menuVisible) {
           setMenuVisible(true);
         }

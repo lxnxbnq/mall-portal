@@ -39,8 +39,10 @@ export function* sagas() {
   }
 }
 
-const reducers: any = {};
-modules.forEach(m => {
-  reducers[m.namespace] = m.reducer;
-});
-export const rootReducer = combineReducers(reducers);
+const createReducers = (modules: any[]): object => {
+  const reducers: any = {};
+  modules.forEach(m => (reducers[m.namespace] = m.reducer));
+  return reducers;
+};
+
+export const rootReducer = combineReducers(createReducers(modules));
