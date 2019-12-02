@@ -30,6 +30,8 @@
   "devDependencies": {
     "@babel/core": "7.6.0",
     "@babel/plugin-proposal-decorators": "^7.7.0",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/register": "^7.7.4",
     "@svgr/webpack": "4.3.2",
     "@teamsupercell/typings-for-css-modules-loader": "^2.1.0",
     "@types/classnames": "^2.2.9",
