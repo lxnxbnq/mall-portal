@@ -18,7 +18,7 @@ export default {
   namespace: 'member',
   effects: {
     *increaseCount({ payload }: any) {
-      yield call(getCat);
+      // yield call(getCat);
       yield put({
         type: Change_Count,
         payload

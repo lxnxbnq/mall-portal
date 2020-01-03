@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-const Home: React.FC = ({ count }: any): React.ReactElement => {
+const Home: React.FC = (): React.ReactElement => {
+  const { count } = useSelector((state: any) => state.home);
   return <div>Home{count}</div>;
 };
 
-export default connect(({ home }: any) => {
-  return {
-    count: home.count
-  };
-})(Home);
+export default Home;

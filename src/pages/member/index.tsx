@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-const Member: React.FC = ({ count, dispatch }: any): React.ReactElement => {
+const Member: React.FC = (): React.ReactElement => {
+  const { count } = useSelector((state: any) => state.member);
+  const dispatch = useDispatch();
+
   return (
     <div>
       Member{count}
@@ -19,8 +22,4 @@ const Member: React.FC = ({ count, dispatch }: any): React.ReactElement => {
   );
 };
 
-export default connect(({ member }: any) => {
-  return {
-    count: member.count
-  };
-})(Member);
+export default Member;
