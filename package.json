@@ -11,6 +11,8 @@
     "lint": "yarn prettier && yarn lint:check"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.3",
+    "@material-ui/icons": "^4.9.1",
     "camelcase": "^5.2.0",
     "classnames": "^2.2.6",
     "hash.js": "^1.1.7",
