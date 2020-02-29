@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 const Member: React.FC = (): React.ReactElement => {
-  const { count } = useSelector((state: any) => state.member);
+  const { count } = useSelector((state: any) => state.classify);
   const dispatch = useDispatch();
 
   return (
@@ -11,7 +11,7 @@ const Member: React.FC = (): React.ReactElement => {
       <button
         onClick={() =>
           dispatch({
-            type: 'member/increaseCount',
+            type: 'classify/increaseCount',
             payload: { count: count + 1 }
           })
         }

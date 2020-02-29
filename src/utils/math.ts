@@ -1,5 +1,7 @@
-const math = (num1: number, num2: number) => {
-  return num1 + num2;
-};
-
-export default math;
+// 小数运算精度
+export function formatFloat(f: number, digit: number): number {
+  // Math.pow(指数，幂指数)
+  const m = Math.pow(10, digit);
+  // Math.round（） 四舍五入
+  return Math.round(f * m) / m;
+}

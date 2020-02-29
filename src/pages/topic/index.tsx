@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 const About: React.FC = (): React.ReactElement => {
-  const { count } = useSelector((state: any) => state.about);
+  const { count } = useSelector((state: any) => state.topic);
   const dispatch = useDispatch();
   return (
     <div>
@@ -10,7 +10,7 @@ const About: React.FC = (): React.ReactElement => {
       <button
         onClick={() =>
           dispatch({
-            type: 'about/increaseCount',
+            type: 'topic/increaseCount',
             payload: { count: count + 1 }
           })
         }
@@ -20,7 +20,7 @@ const About: React.FC = (): React.ReactElement => {
       <button
         onClick={() =>
           dispatch({
-            type: 'about/decreaseCount',
+            type: 'topic/decreaseCount',
             payload: { count: count - 1 }
           })
         }
