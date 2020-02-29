@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
 import { takeEvery, all } from 'redux-saga/effects';
 
-import about from '@pages/about/models/index';
-import member from '@pages/member/models/index';
-import home from '@pages/home/models/index';
+import topic from '@src/pages/topic/models/index';
+import classify from '@src/pages/classify/models/index';
+import home from '@src/pages/home/models/index';
+import mine from '@src/pages/mine/models/index';
 
 const namespaces: string[] = [];
-const modules = [about, member, home];
+const modules = [topic, classify, home, mine];
 
 function P(modules: any[]) {
   return new Promise((resolve, reject) => {
@@ -39,8 +40,10 @@ export function* sagas() {
   }
 }
 
-const reducers: any = {};
-modules.forEach(m => {
-  reducers[m.namespace] = m.reducer;
-});
-export const rootReducer = combineReducers(reducers);
+const createReducers = (modules: any[]): object => {
+  const reducers: any = {};
+  modules.forEach(m => (reducers[m.namespace] = m.reducer));
+  return reducers;
+};
+
+export const rootReducer = combineReducers(createReducers(modules));

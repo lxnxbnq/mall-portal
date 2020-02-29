@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-const About: React.FC = ({ count, dispatch }: any): React.ReactElement => {
+const About: React.FC = (): React.ReactElement => {
+  const { count } = useSelector((state: any) => state.topic);
+  const dispatch = useDispatch();
   return (
     <div>
       About{count}
       <button
         onClick={() =>
           dispatch({
-            type: 'about/increaseCount',
+            type: 'topic/increaseCount',
             payload: { count: count + 1 }
           })
         }
@@ -18,7 +20,7 @@ const About: React.FC = ({ count, dispatch }: any): React.ReactElement => {
       <button
         onClick={() =>
           dispatch({
-            type: 'about/decreaseCount',
+            type: 'topic/decreaseCount',
             payload: { count: count - 1 }
           })
         }
@@ -29,8 +31,4 @@ const About: React.FC = ({ count, dispatch }: any): React.ReactElement => {
   );
 };
 
-export default connect(({ about }: any) => {
-  return {
-    count: about.count
-  };
-})(About);
+export default About;

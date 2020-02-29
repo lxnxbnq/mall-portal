@@ -1,5 +1,6 @@
+import appConfig from './core/appConfig';
+import proxy from 'http-proxy-middleware';
 
-const proxy = require('http-proxy-middleware');
 module.exports = function(app) {
-  app.use(proxy('/api/v1', { target: 'http://localhost:8000' }));
-}
+  app.use(proxy(appConfig.prefix, { target: appConfig.baseURL }));
+};

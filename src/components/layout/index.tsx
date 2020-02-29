@@ -1,13 +1,14 @@
 import React from 'react';
+import Header from '@src/components/header/layoutHeader';
+import Footer from '@components/footer';
 import s from './index.module.less';
 
-import Header from '@components/header';
-
-const Layout: React.FC = ({ children }: any): React.ReactElement => {
+const Layout = (props: { children: React.ReactNode }) => {
   return (
     <div className={s.layout}>
       <Header />
-      <div>{children}</div>
+      {props.children}
+      <Footer />
     </div>
   );
 };

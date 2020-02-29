@@ -1,7 +1,7 @@
-import { put, call } from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 import { IinitState } from './interface';
 export const Change_Count = 'Change_Count';
-import { getCat } from '@service/api';
+export const DECREASE_Count = 'DECREASE_Count';
 
 const initState: IinitState = {
   count: 1
@@ -11,16 +11,24 @@ const initState: IinitState = {
 const ACTION_HANDLER: any = {
   [Change_Count]: (state: IinitState, action: any) => {
     return { ...state, ...action.payload };
+  },
+  [DECREASE_Count]: (state: IinitState, action: any) => {
+    return { ...state, ...action.payload };
   }
 };
 
 export default {
-  namespace: 'member',
+  namespace: 'topic',
   effects: {
     *increaseCount({ payload }: any) {
-      yield call(getCat);
       yield put({
         type: Change_Count,
+        payload
+      });
+    },
+    *decreaseCount({ payload }: any) {
+      yield put({
+        type: DECREASE_Count,
         payload
       });
     }
