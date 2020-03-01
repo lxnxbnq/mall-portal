@@ -22,8 +22,8 @@ const RouteWithSub = routesData =>
         exact={route.exact}
         render={props => (
           <route.component {...props}>
-            {/* 重定向 */}
-            {route.redirect ? (
+            {/* 重定向, location.pathname === route.path是防止在刷新别的界面时返回到首页 */}
+            {route.redirect && location.pathname === route.path ? (
               <Redirect key={key} from={route.path} to={route.redirect} />
             ) : null}
             {RouteWithSub(route.routes)}

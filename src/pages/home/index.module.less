@@ -1,0 +1,49 @@
+.container {
+  background-color: #eeeeee;
+  position: absolute;
+  left: 0;
+  top: 46px;
+  right: 0;
+  bottom: 56px;
+  overflow: auto;
+}
+.header {
+  height: 171px;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #cccccc;
+}
+
+.slider {
+  height: 80%;
+
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.classify {
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 100%;
+  padding: 8px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.classifyItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.notice {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  border-bottom: 1px solid #cccccc;
+}
