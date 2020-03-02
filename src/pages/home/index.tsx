@@ -2,6 +2,7 @@ import * as React from 'react';
 import Slider from 'react-slick';
 import Button from '@material-ui/core/Button';
 import BrandDirectSupply from './brandDirectSupply';
+import Seckill from './seckill';
 import s from './index.module.less';
 
 import u39 from '@assets/mainpage/u39.png';
@@ -105,6 +106,7 @@ const Home: React.FC = (): React.ReactElement => {
         </Button>
       </div>
       <BrandDirectSupply />
+      <Seckill />
     </div>
   );
 };

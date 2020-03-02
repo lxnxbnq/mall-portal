@@ -29,7 +29,7 @@ const BrandDirectSupply = (): ReactElement => {
   const renderItem = (data: SupplyItem[]) => {
     return data.map((item: SupplyItem) => (
       <div className={s.supplyItem} key={item.id}>
-        <h4 className={s.supplyTitle}>{item.title}</h4>
+        <span className={s.supplyTitle}>{item.title}</span>
         <p className={s.supplyPrice}>{item.price}元起</p>
         <div className={s.supplyPicWrap}>
           <div className={s.label}>
@@ -44,7 +44,7 @@ const BrandDirectSupply = (): ReactElement => {
   return (
     <div className={s.container}>
       <div className={s.header}>
-        <h3>品牌制造商直供</h3>
+        <span>品牌制造商直供</span>
         <span>更多推荐&gt;&gt;</span>
       </div>
       <div className={s.supplyContent}>{renderItem(SupplyItems)}</div>
