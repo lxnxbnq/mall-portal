@@ -13,6 +13,7 @@ import u73 from '@assets/mainpage/u73.png';
 import u76 from '@assets/mainpage/u76.png';
 
 import Mock from 'mockjs';
+import { login } from '@service/api';
 
 // import { useSelector } from 'react-redux';
 
@@ -72,6 +73,12 @@ const ClassifyItemTemplate = (props: ClassifyItem) => (
 );
 
 const Home: React.FC = (): React.ReactElement => {
+  React.useEffect(() => {
+    login({ username: 'william', password: '123' }).then(data => {
+      console.log(data);
+    });
+  });
+
   // const { count } = useSelector((state: any) => state.home);
   const settings = {
     dots: true,
